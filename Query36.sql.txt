@@ -1,0 +1,10 @@
+SELECT customers.customer_id,SUM(freight)AS TOTAL_AMOUNT,
+    CASE
+        WHEN SUM(orders.freight) > 5000 THEN 'High Value'
+        WHEN SUM(orders.freight) > 1000 THEN 'Medium Value'
+        ELSE 'Low Value'
+    END AS Classification
+FROM customers
+JOIN orders ON customers.customer_id = orders.customer_id
+JOIN order_details  ON orders.order_id = order_details.order_id
+GROUP BY customers.customer_id

@@ -1,0 +1,4 @@
+Select customer_id,
+count (*) as total_orders
+from orders
+group by customer_id;

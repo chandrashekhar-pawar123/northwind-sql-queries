@@ -1,0 +1,5 @@
+select distinct suppliers.*
+from suppliers
+join products on suppliers.supplier_id = products.supplier_id
+join categories on products.category_id = categories.category_id
+where categories.category_name = 'seafood';

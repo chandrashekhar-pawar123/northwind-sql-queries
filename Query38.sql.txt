@@ -1,0 +1,17 @@
+select
+	employees.employee_id,
+    employees.first_name,
+    employees.last_name,
+    count(orders.order_id) AS NumberOfOrders,
+    case
+    	when count(orders.order_id) > 100 Then 'High Performing'
+        when count(orders.order_id) > 50 then 'Medium Performing'
+        else 'Lower Performing'
+    End as PerformanceCategory
+from
+	employees
+    left join orders on employees.employee_id = orders.employee_id
+group by
+	employees.employee_id,
+    employees.first_name,
+    employees.last_name;

@@ -1,0 +1,4 @@
+select sum(order_details.unit_price * order_details.quantity) as TotalRevenue
+from orders
+join order_details on orders.order_id = order_details.order_id
+where year (orders.order_date) = 2016;

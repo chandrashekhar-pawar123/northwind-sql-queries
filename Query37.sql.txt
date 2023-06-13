@@ -1,0 +1,15 @@
+select 
+	products.product_id,
+    products.product_name,
+    sum(order_details.quantity) As Totalquantity,
+    case
+    	when sum(order_details.quantity) > 1000 then 'High Sales'
+        when sum(order_details.quantity) > 500 then 'Medium Sales'
+        else 'Lower Sales'
+    End as SalesCategory
+from
+	products
+    join order_details on products.product_id = order_details.product_id
+group by
+	products.product_id,
+    products.product_name;

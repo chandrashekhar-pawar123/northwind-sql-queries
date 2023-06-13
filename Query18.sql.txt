@@ -1,0 +1,4 @@
+SELECT e.employee_id
+FROM employees e
+JOIN employees  ON e.reports_to = e.employee_id
+WHERE e.first_name and e.last_name = 'Andrew Fuller';

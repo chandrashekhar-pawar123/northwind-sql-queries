@@ -1,0 +1,6 @@
+select employees.employee_id, employees.first_name, employees.last_name,
+sum(order_details.unit_price * order_details.quantity) as Totalrevenue
+from employees
+join orders on employees.employee_id = orders.employee_id
+join order_details on orders.order_id = order_details.order_id
+group by employees.employee_id, employees.first_name, employees.last_name;
